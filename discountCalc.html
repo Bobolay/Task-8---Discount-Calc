@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>Base</title>
+    </head>
+    <body>
+
+        <script>
+            var arr = [50,20,30,17,100];
+            var discount = 10;
+            
+            function compareNumbers(a,b){
+                if (a>b) return -1;
+                if (a<b) return 1;
+            }
+            arr.sort(compareNumbers);
+            
+            var discountNumber = Math.floor(arr.length/3);
+            
+            var removed = arr.splice(0, discountNumber);
+            var discountedPrices = [];
+            for(var i=0; i<removed.length; i++){
+                removed[i]=((100-discount)/100)*removed[i];
+                discountedPrices[i]=removed[i];
+            }
+            var allPrices = arr.concat(discountedPrices);
+            var sum=0;
+            for(var i=0; i<allPrices.length; i++){
+                sum +=allPrices[i];
+            }
+            alert(Math.round(sum*100)/100);                         
+        </script>
+        
+    </body>
+</html>
